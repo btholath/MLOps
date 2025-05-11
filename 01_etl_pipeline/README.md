@@ -130,8 +130,8 @@ Deployment
 Using GitHub Actions
 /home/bijut/aws_apps/MLOps/01_etl_pipeline/.github/main.yml
 
-
 ## GitHub setup
+
 (.venv) bijut@b:~/aws_apps/MLOps$ git init
 (.venv) bijut@b:~/aws_apps/MLOps$ git remote add origin git@github.com:btholath/MLOps.git
 (.venv) bijut@b:~/aws_apps/MLOps$ git branch -M main
@@ -140,7 +140,30 @@ Using GitHub Actions
 (.venv) bijut@b:~/aws_apps/MLOps$ git push -u origin main
 
 ## Python virtual environment
+
 bijut@b:~/aws_apps$ source .venv/bin/activate
 (.venv) bijut@b:~/aws_apps$ cd MLOps/01_etl_pipeline/
 (.venv) bijut@b:~/aws_apps/MLOps/01_etl_pipeline$ pip install --upgrade pip
 (.venv) bijut@b:~/aws_apps/MLOps/01_etl_pipeline$ pip install -r requirements.txt
+
+vscode wsl ubuntu
+[Running] python -u "/home/bijut/aws_apps/MLOps/01_etl_pipeline/security/exception/exception.py"
+/bin/sh: 1: python: not found
+[Done] exited with code=127 in 0.118 seconds
+
+bijut@b:~/aws_apps/MLOps/01_etl_pipeline/security$ which python
+which python3
+/usr/bin/python3
+bijut@b:~/aws_apps/MLOps/01_etl_pipeline/security$ sudo ln -s /usr/bin/python3 /usr/bin/python
+[sudo] password for bijut: 
+bijut@b:~/aws_apps/MLOps/01_etl_pipeline/security$ python --version
+Python 3.12.3
+
+
+[Running] python -u "/home/bijut/aws_apps/MLOps/01_etl_pipeline/security/exception/exception.py"
+Traceback (most recent call last):
+  File "/home/bijut/aws_apps/MLOps/01_etl_pipeline/security/exception/exception.py", line 2, in <module>
+    from security.logging import logger
+ModuleNotFoundError: No module named 'security'
+
+[Done] exited with code=1 in 0.277 seconds
