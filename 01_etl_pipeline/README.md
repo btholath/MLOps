@@ -155,15 +155,68 @@ bijut@b:~/aws_apps/MLOps/01_etl_pipeline/security$ which python
 which python3
 /usr/bin/python3
 bijut@b:~/aws_apps/MLOps/01_etl_pipeline/security$ sudo ln -s /usr/bin/python3 /usr/bin/python
-[sudo] password for bijut: 
+[sudo] password for bijut:
 bijut@b:~/aws_apps/MLOps/01_etl_pipeline/security$ python --version
 Python 3.12.3
 
-
 [Running] python -u "/home/bijut/aws_apps/MLOps/01_etl_pipeline/security/exception/exception.py"
 Traceback (most recent call last):
-  File "/home/bijut/aws_apps/MLOps/01_etl_pipeline/security/exception/exception.py", line 2, in <module>
-    from security.logging import logger
+File "/home/bijut/aws_apps/MLOps/01_etl_pipeline/security/exception/exception.py", line 2, in <module>
+from security.logging import logger
 ModuleNotFoundError: No module named 'security'
 
 [Done] exited with code=1 in 0.277 seconds
+
+## Install Mongodb in WSL Ubuntu
+
+https://docs.mongodb.com/manual/administration/install-on-linux
+https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/#std-label-install-mdb-community-ubuntu
+bijut@b:~/aws_apps/MLOps$
+sudo apt-get install gnupg curl
+curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | \
+ sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg \
+ --dearmor
+
+bijut@b:~/aws_apps/MLOps$ lsb_release -a
+No LSB modules are available.
+Distributor ID: Ubuntu
+Description: Ubuntu 24.04.2 LTS
+Release: 24.04
+Codename: noble
+
+bijut@b:~/aws_apps/MLOps$
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
+
+sudo apt-get update
+
+sudo apt-get install -y mongodb-org
+
+sudo systemctl start mongod
+
+sudo systemctl daemon-reload
+
+sudo systemctl status mongod
+
+sudo systemctl enable mongod
+
+cat /var/log/mongodb/mongod.log
+sudo rm -f /tmp/mongodb-27017.sock
+sudo systemctl start mongod
+sudo systemctl status mongod
+bijut@b:~/aws_apps/MLOps$ sudo lsof -i :27017
+COMMAND PID USER FD TYPE DEVICE SIZE/OFF NODE NAME
+mongod 16468 bijut 10u IPv4 18136475 0t0 TCP localhost:27017 (LISTEN)
+sudo kill -9 16468
+sudo systemctl start mongod
+sudo systemctl status mongod
+● mongod.service - MongoDB Database Server
+Loaded: loaded (/usr/lib/systemd/system/mongod.service; enabled; preset: enabled)
+Active: active (running) since Sun 2025-05-11 15:31:38 PDT; 22ms ago
+Docs: https://docs.mongodb.org/manual
+Main PID: 22776 (mongod)
+Memory: 5.7M ()
+CGroup: /system.slice/mongod.service
+└─22776 /usr/bin/mongod --config /etc/mongod.conf
+
+May 11 15:31:38 b systemd[1]: Started mongod.service - MongoDB Database Server.
+bijut@b:~/aws_apps/MLOps$

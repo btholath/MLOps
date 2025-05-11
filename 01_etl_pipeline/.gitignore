@@ -1,3 +1,7 @@
-venv
-.venv
+# Ignore virtual environments and environment files
+venv/
+.venv/
 .env
+
+# Ignore files starting with 'skip'
+skip*
