@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "WSL: Run connectivity_test",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/setup_mongodb/connectivity_test.py",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env",
+      "python": "${workspaceFolder}/.venv/bin/python"
+    }
+  ]
+}

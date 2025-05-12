@@ -1,0 +1,2 @@
+Requirement already satisfied: pymongo in /home/bijut/aws_apps/.venv/lib/python3.12/site-packages (4.12.1)
+Requirement already satisfied: dnspython<3.0.0,>=1.16.0 in /home/bijut/aws_apps/.venv/lib/python3.12/site-packages (from pymongo) (1.16.0)

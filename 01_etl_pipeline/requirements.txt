@@ -3,5 +3,6 @@ pandas
 numpy
 pymongo
 certifi
+pymongo>=4.0
 
 -e .
