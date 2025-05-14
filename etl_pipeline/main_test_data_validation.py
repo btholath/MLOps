@@ -16,9 +16,11 @@ Audience:
 """
 
 from etl_pipeline.security.components.data_ingestion import DataIngestion
+from etl_pipeline.security.components.data_validation import DataValidation
+
 from etl_pipeline.security.exception.exception import NetworkSecurityException
 from etl_pipeline.security.logging.logger_config import logging
-from etl_pipeline.security.entity.config_entity import DataIngestionConfig
+from etl_pipeline.security.entity.config_entity import DataIngestionConfig, DataValidationConfig
 from etl_pipeline.security.entity.config_entity import TrainingPipelineConfig
 
 
@@ -33,10 +35,18 @@ if __name__ == '__main__':
         dataingestionconfig = DataIngestionConfig(trainingpipelineconfig)
         data_ingestion = DataIngestion(dataingestionconfig)
         logging.info("Initiate the data ingestion")
-        dataingestionartifact = data_ingestion.initiate_data_ingestion()
+        data_ingestion_artifact = data_ingestion.initiate_data_ingestion()
         logging.info("Data Initiation Completed")
         logging.info("Data Ingestion Artifact")
-        print(dataingestionartifact)
+        print(data_ingestion_artifact)
+
+        # Step 2: Data Validation
+        data_validation_config = DataValidationConfig(trainingpipelineconfig)
+        data_validation = DataValidation(data_ingestion_artifact, data_validation_config)
+        logging.info("Initiate the data Validation")
+        data_validation_artifact = data_validation.initiate_data_validation()
+        logging.info("data Validation Completed")
+        print(data_validation_artifact)
 
     except Exception as e:
         raise NetworkSecurityException(e, sys)
