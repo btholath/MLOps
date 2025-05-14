@@ -1,0 +1,25 @@
+2025-05-14 08:19:20,963 - 25 - root - INFO - Logging system initialized successfully.
+2025-05-14 08:19:21,712 - 27 - dotenv.main - WARNING - python-dotenv could not parse statement starting at line 3
+2025-05-14 08:19:21,788 - 38 - root - INFO - Initiate the data ingestion
+2025-05-14 08:19:22,545 - 104 - root - INFO - Performed train test split on the dataframe
+2025-05-14 08:19:22,545 - 106 - root - INFO - Exited split_data_as_train_test method of Data_Ingestion class
+2025-05-14 08:19:22,546 - 114 - root - INFO - Exporting train and test file path.
+2025-05-14 08:19:22,694 - 123 - root - INFO - Exported train and test file path.
+2025-05-14 08:19:22,694 - 40 - root - INFO - Data Initiation Completed
+2025-05-14 08:19:22,694 - 41 - root - INFO - Data Ingestion Artifact
+2025-05-14 08:19:22,707 - 47 - root - INFO - Initiate the data Validation
+2025-05-14 08:19:22,752 - 100 - root - INFO - Required number of columns:2
+2025-05-14 08:19:22,752 - 101 - root - INFO - Data frame has columns:31
+2025-05-14 08:19:22,752 - 100 - root - INFO - Required number of columns:2
+2025-05-14 08:19:22,752 - 101 - root - INFO - Data frame has columns:31
+2025-05-14 08:19:23,169 - 49 - root - INFO - data Validation Completed
+2025-05-14 08:19:23,169 - 54 - root - INFO - data Transformation started
+2025-05-14 08:19:23,169 - 159 - root - INFO - Entered initiate_data_transformation method of DataTransformation class
+2025-05-14 08:19:23,169 - 161 - root - INFO - Starting data transformation
+2025-05-14 08:19:23,243 - 116 - root - INFO - Entered get_data_trnasformer_object method of Trnasformation class
+2025-05-14 08:19:23,243 - 121 - root - INFO - Initialise KNNImputer with {'missing_values': nan, 'n_neighbors': 3, 'weights': 'uniform'}
+2025-05-14 08:19:23,264 - 46 - root - INFO - Entered the save_object method of MainUtils class
+2025-05-14 08:19:23,281 - 50 - root - INFO - Exited the save_object method of MainUtils class
+2025-05-14 08:19:23,281 - 46 - root - INFO - Entered the save_object method of MainUtils class
+2025-05-14 08:19:23,287 - 50 - root - INFO - Exited the save_object method of MainUtils class
+2025-05-14 08:19:23,288 - 58 - root - INFO - data Transformation completed
